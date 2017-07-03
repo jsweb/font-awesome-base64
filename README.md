@@ -14,6 +14,12 @@ IE compatibility is not a concern. For a compatibility reference see the link:
 
 ## Install
 
+### CDN
+
+```html
+<link rel="stylesheet" href="https://unpkg.com/font-awesome-base64"/>
+```
+
 ### NPM
 
 `npm i -S font-awesome-base64`
