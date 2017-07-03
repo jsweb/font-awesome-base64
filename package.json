@@ -1,6 +1,6 @@
 {
   "name": "font-awesome-base64",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "main": "index.css",
   "repository": "git@gitlab.com:tecno.site/font-awesome-base64.git",
   "author": "Alex Bruno Cáceres <git.alexbr@outlook.com>",
