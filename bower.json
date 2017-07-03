@@ -1,0 +1,23 @@
+{
+  "name": "font-awesome-base64",
+  "description": "Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files.",
+  "main": "index.css",
+  "authors": [
+    "Alex Bruno Cáceres <git.alexbr@outlook.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "icons",
+    "font",
+    "awesome",
+    "base64"
+  ],
+  "homepage": "https://gitlab.com/tecno.site/font-awesome-base64",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
