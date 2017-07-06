@@ -3,7 +3,7 @@
   "description": "Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files.",
   "version": "1.0.2",
   "main": "index.css",
-  "repository": "git@gitlab.com:tecno.site/font-awesome-base64.git",
+  "repository": "git@gitlab.com:tecnos/font-awesome-base64.git",
   "author": "Alex Bruno Cáceres <git.alexbr@outlook.com>",
   "license": "MIT",
   "keywords": [
