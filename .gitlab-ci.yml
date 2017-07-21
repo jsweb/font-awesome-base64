@@ -1,0 +1,9 @@
+image: node:latest
+
+publish:
+    stage: deploy
+    only:
+        - tags
+    script:
+        - echo "//registry.npmjs.org/:_authToken=755c6879-9565-4c7b-9064-2e50a6d1ad36" > .npmrc
+        - npm publish
