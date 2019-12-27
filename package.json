@@ -1,9 +1,9 @@
 {
-  "name": "font-awesome-base64",
+  "name": "@jsweb/font-awesome-base64",
   "description": "Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files",
   "version": "1.0.4",
-  "main": "index.css",
-  "repository": "git@gitlab.com:tecnos/font-awesome-base64.git",
+  "main": "dist/fa-all.css",
+  "repository": "git@github.com:jsweb/font-awesome-base64.git",
   "author": "Alex Bruno Cáceres <git.alexbr@outlook.com>",
   "license": "MIT",
   "keywords": [
@@ -13,14 +13,33 @@
     "base64"
   ],
   "devDependencies": {
-    "font-awesome": "^4.7.0",
-    "js-yaml": "^3.9.0",
-    "less": "^2.7.2",
-    "less-plugin-clean-css": "^1.5.1",
-    "request": "^2.81.0"
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@fortawesome/fontawesome-free": "^5.12.0",
+    "husky": "^3.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.19.1",
+    "rollup": "^1.27.14",
+    "shx": "^0.3.2",
+    "stylus": "^0.54.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint && git add ."
+    }
   },
   "scripts": {
-    "build": "yarn && node src/list.js && yarn compile",
-    "compile": "lessc --no-ie-compat --clean-css src/index.less index.css"
+    "clean": "shx rm -rf dist",
+    "major": "npm version major && npm run push",
+    "minor": "npm version minor && npm run push",
+    "patch": "npm version patch && npm run push",
+    "prepare": "npm run dist",
+    "push": "git push && git push --tags",
+    "lint": "prettier --config .prettierrc.json --write 'src/**/*.js'",
+    "dist": "run-s dist:*",
+    "dist:lint": "npm run lint",
+    "dist:clean": "npm run clean",
+    "dist:build": "rollup -c",
+    "dist:css": "node dist/prepare.js"
   }
 }
