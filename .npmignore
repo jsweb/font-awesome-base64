@@ -1,9 +1,7 @@
 src
-dist/*.js
 .prettierrc.json
 .babelrc
 .travis.yml
-rollup.config.js
 
 # Logs
 logs

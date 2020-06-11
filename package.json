@@ -13,13 +13,13 @@
     "base64"
   ],
   "devDependencies": {
-    "@babel/core": "^7.8.6",
-    "@babel/preset-env": "^7.8.6",
-    "@fortawesome/fontawesome-free": "^5.12.1",
-    "husky": "^4.2.3",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "husky": "^4.2.5",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.19.1",
-    "rollup": "^1.32.0",
+    "prettier": "^2.0.5",
     "shx": "^0.3.2",
     "stylus": "^0.54.7"
   },
@@ -29,17 +29,15 @@
     }
   },
   "scripts": {
-    "clean": "shx rm -rf dist",
+    "clean": "shx rm -rf dist && shx mkdir dist",
     "major": "npm version major && npm run push",
     "minor": "npm version minor && npm run push",
     "patch": "npm version patch && npm run push",
-    "prepare": "npm run dist",
     "push": "git push && git push --tags",
-    "lint": "prettier --config .prettierrc.json --write 'src/**/*.js'",
-    "dist": "run-s dist:*",
-    "dist:lint": "npm run lint",
-    "dist:clean": "npm run clean",
-    "dist:build": "rollup -c",
-    "dist:css": "node dist/prepare.js"
+    "lint": "prettier --write src/**/*.js",
+    "build": "run-s build:*",
+    "build:clean": "npm run clean",
+    "build:lint": "npm run lint",
+    "build:css": "babel-node src/build.js"
   }
 }
