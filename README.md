@@ -6,7 +6,9 @@ Font Awesome icons compiled with base64 embedded font to CSS instead of link to 
 
 This compilation uses original files from fontawesome package and a little custom hack to replace `@font-face src url` settings and embed font with `data-uri`.
 
-Only WOFF2 fonts are included to minify the compiled CSS at most as possible and because WOFF2 is supported by all major modern browsers. Web is the focus here.
+Only WOFF2 fonts are included to minify the compiled CSS at most as possible and because WOFF2 is supported by all major modern browsers.
+
+Web projects are the target. Specially PWA with offline capabilities, caching the CSS icons lib easy.
 
 IE compatibility is not a concern. For a compatibility reference see the link:
 
@@ -17,7 +19,7 @@ IE compatibility is not a concern. For a compatibility reference see the link:
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@jsweb/font-awesome-base64"/>
+<link rel="stylesheet" href="https://unpkg.com/@jsweb/font-awesome-base64" />
 ```
 
 ### NPM
@@ -41,4 +43,3 @@ If you download the package using NPM or Yarn, you must use files as follows:
 Only free icons are included and you can see them at Fontawesome icons index:
 
 https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free
-
