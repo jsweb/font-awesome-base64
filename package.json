@@ -16,11 +16,11 @@
     "@babel/core": "^7.11.4",
     "@babel/node": "^7.10.5",
     "@babel/preset-env": "^7.11.0",
-    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@jsweb/packs": "^2.0.9",
     "husky": "^4.2.5",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.0.5",
-    "stylus": "^0.54.8"
+    "stylus": "^0.54.7"
   },
   "husky": {
     "hooks": {
@@ -28,15 +28,28 @@
     }
   },
   "scripts": {
-    "clean": "rm -rf dist && mkdir dist",
+    "clean": "rm -rf dist jsweb-packs && mkdir dist",
     "major": "npm version major && npm run push",
     "minor": "npm version minor && npm run push",
     "patch": "npm version patch && npm run push",
     "push": "git push && git push --tags",
     "lint": "prettier --write src/**/*.js",
-    "build": "run-s build:*",
     "build:clean": "npm run clean",
     "build:lint": "npm run lint",
-    "build:css": "babel-node src/build.js"
+    "build:packs": "npx packs",
+    "build:css": "babel-node src/build.js",
+    "test": "run-s build:*"
+  },
+  "@jsweb/packs": {
+    "dir": "jsweb-packs",
+    "unpkg": {
+      "css/brands.min.css": "@fortawesome/fontawesome-free/css/brands.min.css",
+      "css/fontawesome.min.css": "@fortawesome/fontawesome-free/css/fontawesome.min.css",
+      "css/regular.min.css": "@fortawesome/fontawesome-free/css/regular.min.css",
+      "css/solid.min.css": "@fortawesome/fontawesome-free/css/solid.min.css",
+      "webfonts/fa-brands-400.woff2": "@fortawesome/fontawesome-free/webfonts/fa-brands-400.woff2",
+      "webfonts/fa-regular-400.woff2": "@fortawesome/fontawesome-free/webfonts/fa-regular-400.woff2",
+      "webfonts/fa-solid-900.woff2": "@fortawesome/fontawesome-free/webfonts/fa-solid-900.woff2"
+    }
   }
 }

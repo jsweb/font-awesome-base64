@@ -1,4 +1,5 @@
 src
+jsweb-packs
 .prettierrc.json
 .babelrc
 .travis.yml

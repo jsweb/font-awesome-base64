@@ -13,14 +13,7 @@ export function readPath(path) {
 }
 
 export function faFree(name) {
-  return join(
-    root,
-    'node_modules',
-    '@fortawesome',
-    'fontawesome-free',
-    'css',
-    `${name}.min.css`,
-  )
+  return join(root, 'jsweb-packs', 'unpkg', 'css', `${name}.min.css`)
 }
 
 export function mapNamePath(name) {
@@ -41,14 +34,15 @@ export function mapCleanCode(data) {
 export function mapReplace(data) {
   return {
     ...data,
-    code: data.code.replace(/eot\);.+svg"\)}/g, 'woff2) format("woff2")}'),
+    code: data.code
+      .replace(/eot\);.+svg"\)}/g, 'woff2") format("woff2")}')
+      .replace('url(', 'embedurl("'),
   }
 }
 
 export function mapCssBuild(data) {
   stylus(data.code)
     .set('filename', data.path)
-    .define('url', stylus.url({ limit: false }))
     .render((err, css) => {
       if (err) {
         console.log(data.name, 'error:', err)
