@@ -2,6 +2,12 @@
 
 Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files.
 
+## Font Awesome Free 5.14.0
+
+Only free icons are included and you can see them at Fontawesome icons index:
+
+https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free
+
 ## About
 
 This compilation uses original files from fontawesome package and a little custom hack to replace `@font-face src url` settings and embed font with `data-uri`.
@@ -39,7 +45,3 @@ If you download the package using NPM or Yarn, you must use files as follows:
 - `dist/fa-regular.css`: Web font for regular icons (18.4 kB)
 - `dist/fa-solid.css`: Web font for solid icons (101,7 kB)
 - `dist/fa-all.css`: All above (277.3 kB)
-
-Only free icons are included and you can see them at Fontawesome icons index:
-
-https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free
