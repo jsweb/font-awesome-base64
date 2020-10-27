@@ -9,9 +9,6 @@ import {
   mapCssBuild,
 } from './helpers'
 
-// Base constants
-const faClasses = readPath(faFree('fontawesome'))
-
 // Map helpers
 const fonts = ['brands', 'regular', 'solid']
   .map(mapNamePath)
@@ -20,10 +17,11 @@ const fonts = ['brands', 'regular', 'solid']
   .map(mapReplace)
   .map(mapCssBuild)
 
-const allFonts = fonts.map((data) => data.code).join(' ')
+const allFonts = fonts.map((data) => data.code).join('\n')
+const faClasses = readPath(faFree('fontawesome'))
 
 // Copy fa-base
 writeDist('fa-base', faClasses)
 
 // Build all icons
-writeDist('fa-all', faClasses.concat('\n', allFonts))
+writeDist('fa-all', allFonts.concat('\n', faClasses))
