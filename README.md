@@ -2,7 +2,7 @@
 
 Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files.
 
-## Font Awesome Free 5.14.0
+## Font Awesome Free 5.15.1
 
 Only free icons are included and you can see them at Fontawesome icons index:
 
@@ -12,7 +12,7 @@ https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free
 
 This compilation uses original files from fontawesome package and a little custom hack to replace `@font-face src url` settings and embed font with `data-uri`.
 
-Only WOFF2 fonts are included to minify the compiled CSS at most as possible and because WOFF2 is supported by all major modern browsers.
+Only WOFF2 fonts are included to minify the compiled CSS at most as possible and because WOFF2 is supported by all modern major browsers.
 
 Web projects are the target. Specially PWA with offline capabilities, caching the CSS icons lib easy.
 
