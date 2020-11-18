@@ -9,6 +9,10 @@ import {
   mapCssBuild,
 } from './helpers'
 
+// Copy fa-base
+const faClasses = readPath(faFree('fontawesome'))
+writeDist('fa-base', faClasses)
+
 // Map helpers
 const parts = ['brands', 'regular', 'solid']
   .map(mapNamePath)
@@ -17,13 +21,9 @@ const parts = ['brands', 'regular', 'solid']
   .map(mapReplace)
   .map(mapCssBuild)
 
-Promise.all(parts).then((styles) => console.log(styles))
-
-// Copy fa-base
-const faClasses = readPath(faFree('fontawesome'))
-writeDist('fa-base', faClasses)
-
-// Build all icons
-// const allFonts = fonts.concat(faClasses).join('\n')
-// console.log(fonts)
-// writeDist('fa-all', allFonts.concat('\n', faClasses))
+// Proccess all styles
+Promise.all(parts).then((styles) => {
+  const allFonts = styles.concat(faClasses).join('\n')
+  console.log(allFonts)
+  // writeDist('fa-all', allFonts.concat('\n', faClasses))
+})
