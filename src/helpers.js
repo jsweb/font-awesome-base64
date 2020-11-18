@@ -41,10 +41,12 @@ export function mapReplace(data) {
 }
 
 export function mapCssBuild(data) {
+  let result
+
   less
     .render(data.code, { filename: data.path })
     .then((output) => {
-      data.code = [
+      result = [
         '/*!',
         ` * ${pack.name}`,
         ` * @version ${pack.version}`,
@@ -56,11 +58,11 @@ export function mapCssBuild(data) {
         output.css,
       ].join('\n')
 
-      writeDist(data.name, data.code)
+      writeDist(data.name, result)
     })
     .catch((error) => console.log('Error:', error))
 
-  return data
+  return result
 }
 
 export function writeDist(name, data) {
