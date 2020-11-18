@@ -56,8 +56,7 @@ export async function mapCssBuild(data) {
   try {
     const { css } = await less.render(data.code, { filename: data.path })
 
-    template.push(css)
-    result = template.join('\n')
+    result = template.concat(css).join('\n')
 
     writeDist(data.name, result)
   } catch (error) {
