@@ -40,27 +40,29 @@ export function mapReplace(data) {
   }
 }
 
-export function mapCssBuild(data) {
-  let result
+export async function mapCssBuild(data) {
+  let result = ''
+  const template = [
+    '/*!',
+    ` * ${pack.name}`,
+    ` * @version ${pack.version}`,
+    ` * @desc ${pack.description}`,
+    ` * @author ${pack.author}`,
+    ' * @create date 2017-07-03 17:05:00',
+    ` * @modify date ${now}`,
+    ' */',
+  ]
 
-  less
-    .render(data.code, { filename: data.path })
-    .then((output) => {
-      result = [
-        '/*!',
-        ` * ${pack.name}`,
-        ` * @version ${pack.version}`,
-        ` * @desc ${pack.description}`,
-        ` * @author ${pack.author}`,
-        ' * @create date 2017-07-03 17:05:00',
-        ` * @modify date ${now}`,
-        ' */',
-        output.css,
-      ].join('\n')
+  try {
+    const { css } = await less.render(data.code, { filename: data.path })
 
-      writeDist(data.name, result)
-    })
-    .catch((error) => console.log('Error:', error))
+    template.push(css)
+    result = template.join('\n')
+
+    writeDist(data.name, result)
+  } catch (error) {
+    console.log('Error:', error)
+  }
 
   return result
 }
