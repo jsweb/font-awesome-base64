@@ -24,6 +24,5 @@ const parts = ['brands', 'regular', 'solid']
 // Proccess all styles
 Promise.all(parts).then((styles) => {
   const allFonts = styles.concat(faClasses).join('\n')
-  console.log(allFonts)
-  // writeDist('fa-all', allFonts.concat('\n', faClasses))
+  writeDist('fa-all', allFonts.concat('\n', faClasses))
 })
