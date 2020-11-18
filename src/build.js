@@ -22,6 +22,6 @@ const faClasses = readPath(faFree('fontawesome'))
 writeDist('fa-base', faClasses)
 
 // Build all icons
-const allFonts = fonts.concat(faClasses).join('\n')
-console.log(allFonts)
+// const allFonts = fonts.concat(faClasses).join('\n')
+console.log(fonts)
 // writeDist('fa-all', allFonts.concat('\n', faClasses))
