@@ -10,12 +10,14 @@ import {
 } from './helpers'
 
 // Map helpers
-const fonts = ['brands', 'regular', 'solid']
+const parts = ['brands', 'regular', 'solid']
   .map(mapNamePath)
   .map(mapDataCode)
   .map(mapCleanCode)
   .map(mapReplace)
-  .map(async (data) => await mapCssBuild(data))
+  .map(mapCssBuild)
+
+Promise.all(parts).then((styles) => console.log(styles))
 
 // Copy fa-base
 const faClasses = readPath(faFree('fontawesome'))
@@ -23,5 +25,5 @@ writeDist('fa-base', faClasses)
 
 // Build all icons
 // const allFonts = fonts.concat(faClasses).join('\n')
-console.log(fonts)
+// console.log(fonts)
 // writeDist('fa-all', allFonts.concat('\n', faClasses))
