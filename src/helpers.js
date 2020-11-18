@@ -1,6 +1,6 @@
 import { join } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
-import stylus from 'stylus'
+import less from 'less'
 import pack from '../package.json'
 
 // Base constants
@@ -41,27 +41,24 @@ export function mapReplace(data) {
 }
 
 export function mapCssBuild(data) {
-  stylus(data.code)
-    .set('filename', data.path)
-    .render((err, css) => {
-      if (err) {
-        console.log(data.name, 'error:', err)
-      } else {
-        data.code = [
-          '/*!',
-          ` * ${pack.name}`,
-          ` * @version ${pack.version}`,
-          ` * @desc ${pack.description}`,
-          ` * @author ${pack.author}`,
-          ' * @create date 2017-07-03 17:05:00',
-          ` * @modify date ${now}`,
-          ' */',
-          css,
-        ].join('\n')
+  less
+    .render(data.code, { filename: data.path })
+    .then((output) => {
+      data.code = [
+        '/*!',
+        ` * ${pack.name}`,
+        ` * @version ${pack.version}`,
+        ` * @desc ${pack.description}`,
+        ` * @author ${pack.author}`,
+        ' * @create date 2017-07-03 17:05:00',
+        ` * @modify date ${now}`,
+        ' */',
+        output.css,
+      ].join('\n')
 
-        writeDist(data.name, data.code)
-      }
+      writeDist(data.name, data.code)
     })
+    .catch((error) => console.log('Error:', error))
 
   return data
 }
