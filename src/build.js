@@ -15,7 +15,7 @@ const fonts = ['brands', 'regular', 'solid']
   .map(mapDataCode)
   .map(mapCleanCode)
   .map(mapReplace)
-  .map(mapCssBuild)
+  .map(async (data) => await mapCssBuild(data))
 
 // Copy fa-base
 const faClasses = readPath(faFree('fontawesome'))
