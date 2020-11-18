@@ -36,7 +36,7 @@ export function mapReplace(data) {
     ...data,
     code: data.code
       .replace(/eot\);.+svg"\)}/g, 'woff2") format("woff2")}')
-      .replace('url(', 'embedurl("'),
+      .replace('url(', 'data-uri("'),
   }
 }
 
