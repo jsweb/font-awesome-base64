@@ -1,4 +1,4 @@
-# @jsweb/font-awesome-base64 ![img](https://travis-ci.com/jsweb/font-awesome-base64.svg?branch=master)
+# @jsweb/font-awesome-base64 ![NPM Package](https://github.com/jsweb/font-awesome-base64/workflows/NPM%20Package/badge.svg)
 
 Font Awesome icons compiled with base64 embedded font to CSS instead of link to font files.
 
@@ -10,7 +10,7 @@ https://fontawesome.com/icons?d=gallery&s=brands,regular,solid&m=free
 
 ## About
 
-This compilation uses original files from fontawesome package and a little custom hack to replace `@font-face src url` settings and embed font with `data-uri`.
+This compilation uses original files from fontawesome package and a little custom build hack with LESS to replace `@font-face src url` settings and embed font with `data-uri`.
 
 Only WOFF2 fonts are included to minify the compiled CSS at most as possible and because WOFF2 is supported by all modern major browsers.
 
@@ -40,8 +40,8 @@ IE compatibility is not a concern. For a compatibility reference see the link:
 
 If you download the package using NPM or Yarn, you must use files as follows:
 
-- `dist/fa-base.css`: Fontawesome base icon classes (55.8 kB)
-- `dist/fa-brands.css`: Web font for brand icons (101.5 kB)
-- `dist/fa-regular.css`: Web font for regular icons (18.4 kB)
-- `dist/fa-solid.css`: Web font for solid icons (101,7 kB)
-- `dist/fa-all.css`: All above (277.3 kB)
+- `dist/fa-base.css`: Fontawesome base icon classes (~57 kB)
+- `dist/fa-brands.css`: Web font for brand icons (~103 kB)
+- `dist/fa-regular.css`: Web font for regular icons (~19 kB)
+- `dist/fa-solid.css`: Web font for solid icons (~106 kB)
+- `dist/fa-all.css`: All above (~340 kB)
