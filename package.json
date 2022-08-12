@@ -4,7 +4,7 @@
   "version": "2.3.3",
   "main": "dist/fa-all.css",
   "repository": "git@github.com:jsweb/font-awesome-base64.git",
-  "author": "Alex Bruno Cáceres <git.alexbr@outlook.com>",
+  "author": "Alex Bruno Cáceres <contato@alexbruno.dev>",
   "license": "MIT",
   "keywords": [
     "icons",
@@ -12,32 +12,25 @@
     "awesome",
     "base64"
   ],
-  "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@babel/node": "^7.12.6",
-    "@babel/preset-env": "^7.12.1",
-    "@jsweb/packs": "^2.1.2",
-    "husky": "^4.3.0",
-    "less": "^3.12.2",
-    "npm-run-all": "^4.1.5",
-    "prettier": "^2.1.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint && git add ."
-    }
-  },
   "scripts": {
     "test": "npm run build",
     "build": "run-s build:*",
-    "build:lint": "npm run lint",
-    "build:packs": "packs update",
     "build:clean": "rm -rf dist && mkdir dist",
-    "build:css": "babel-node src/build.js",
-    "lint": "prettier --write src/**/*.js",
+    "build:lint": "prettier --write build/**/*.mjs",
+    "build:packs": "packs update",
+    "build:css": "node build/process.mjs",
+    "build:ls": "ls -lh dist",
     "push": "git push && git push --tags",
     "preversion": "npm t",
     "postversion": "npm run push"
+  },
+  "devDependencies": {
+    "@jsweb/packs": "latest",
+    "less": "latest",
+    "npm-run-all": "latest",
+    "postcss": "latest",
+    "postcss-url": "latest",
+    "prettier": "latest"
   },
   "@jsweb/packs": {
     "dir": "jsweb-packs",

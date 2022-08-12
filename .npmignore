@@ -1,7 +1,6 @@
-src
+build
 jsweb-packs
 .prettierrc.json
-.babelrc
 .github
 
 # Logs
@@ -13,6 +12,9 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
 
 # Output of 'npm pack'
 *.tgz

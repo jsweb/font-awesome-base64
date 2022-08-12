@@ -1,11 +1,13 @@
 import { join } from 'path'
 import { readFileSync, writeFileSync } from 'fs'
-import less from 'less'
-import pack from '../package.json'
+import pack from '../package.json' assert { type: 'json' }
+import postcss from 'postcss'
+import url from 'postcss-url'
 
 // Base constants
 const root = process.cwd()
 const now = new Date().toJSON()
+const inline = url({ url: 'inline' })
 
 // Helper functions
 export function readPath(path) {
@@ -24,24 +26,30 @@ export function mapDataCode(data) {
   return { ...data, code: readPath(data.path) }
 }
 
-export function mapCleanCode(data) {
-  return {
-    ...data,
-    code: data.code.split('\n').slice(4).join(' '),
-  }
-}
-
 export function mapReplace(data) {
   return {
     ...data,
-    code: data.code
-      .replace(/eot\);.+svg"\)}/g, 'woff2") format("woff2")}')
-      .replace('url(', 'data-uri("'),
+    code: data.code.replace(/,url\(.+truetype"\)/g, ''),
   }
 }
 
 export async function mapCssBuild(data) {
-  let result = ''
+  try {
+    const css = await postcss()
+      .use(inline)
+      .process(data.code, { from: data.path })
+
+    writeDist(data.name, css)
+
+    return css
+  } catch (error) {
+    console.log('Error:', error)
+    return `/*** Error: ${error} ***/`
+  }
+}
+
+export function writeDist(name, data) {
+  const path = join(root, 'dist', `${name}.css`)
   const template = [
     '/*!',
     ` * ${pack.name}`,
@@ -52,21 +60,7 @@ export async function mapCssBuild(data) {
     ` * @modify date ${now}`,
     ' */',
   ]
+  const result = template.concat(data).join('\n')
 
-  try {
-    const { css } = await less.render(data.code, { filename: data.path })
-
-    result = template.concat(css).join('\n')
-
-    writeDist(data.name, result)
-  } catch (error) {
-    console.log('Error:', error)
-  }
-
-  return result
-}
-
-export function writeDist(name, data) {
-  const path = join(root, 'dist', `${name}.css`)
-  writeFileSync(path, data)
+  writeFileSync(path, result)
 }
