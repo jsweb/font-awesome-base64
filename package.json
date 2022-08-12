@@ -20,9 +20,8 @@
     "build:packs": "packs update",
     "build:css": "node build/process.mjs",
     "build:ls": "ls -lh dist",
-    "push": "git push && git push --tags",
     "preversion": "npm t",
-    "postversion": "npm run push"
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@jsweb/packs": "latest",
