@@ -25,7 +25,6 @@
   },
   "devDependencies": {
     "@jsweb/packs": "latest",
-    "less": "latest",
     "npm-run-all": "latest",
     "postcss": "latest",
     "postcss-url": "latest",
