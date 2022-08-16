@@ -22,12 +22,6 @@ IE compatibility is not a concern (it is dead, accept it). For a compatibility r
 
 ## Install
 
-### CDN
-
-```html
-<link rel="stylesheet" href="https://unpkg.com/@jsweb/font-awesome-base64" />
-```
-
 ### NPM
 
 `npm i -S @jsweb/font-awesome-base64`
@@ -42,13 +36,13 @@ IE compatibility is not a concern (it is dead, accept it). For a compatibility r
 
 ## Files
 
-If you download the package using NPM or Yarn, you must use files as follows:
+CSS compilations in this package:
 
-- `dist/fa-regular.css`: Web font for regular icons (33 kB)
-- `dist/fa-solid.css`: Web font for solid icons (203 kB)
-- `dist/fa-brands.css`: Web font for brand icons (156 kB)
-- `dist/fa-base.css`: Fontawesome base icon classes (79 kB)
-- `dist/fa-all.css`: All above (547 kB)
+- `fa-all.css`: Full lib (547 KB)
+- `fa-base.css`: Font Awesome base classes (79 KB)
+- `fa-brands.css`: Web font for brand icons (156 KB)
+- `fa-regular.css`: Web font for regular icons (33 KB)
+- `fa-solid.css`: Web font for solid icons (203 KB)
 
 ## Usage
 
@@ -57,22 +51,25 @@ You can just use the entire lib compiled in `fa-all.css`, it is the main file ex
 If you are using a build tool for CSS compilation, just import the file in your CSS, like this:
 
 ```css
-@import '@jsweb/font-awesome-base64';
+@import '@jsweb/font-awesome-base64/fa-all.css';
 ```
 
 If you prefer to link the file from the CDN source, you can do it like this:
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@jsweb/font-awesome-base64" />
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@jsweb/font-awesome-base64/fa-all.css"
+/>
 ```
 
-If you don't need the entire lib or want to use any variants separately, you need to import/link the variant itself AND the `fa-base.css`.
+If you don't need the entire lib or want to use any variant separately, you need to import/link the variant itself AND the `fa-base.css`.
 
 Like this:
 
 ```css
-@import '@jsweb/font-awesome-base64/dist/fa-solid.css';
-@import '@jsweb/font-awesome-base64/dist/fa-base.css';
+@import '@jsweb/font-awesome-base64/fa-solid.css';
+@import '@jsweb/font-awesome-base64/fa-base.css';
 ```
 
 Or:
@@ -80,11 +77,11 @@ Or:
 ```html
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@jsweb/font-awesome-base64/dist/fa-solid.css"
+  href="https://unpkg.com/@jsweb/font-awesome-base64/fa-solid.css"
 />
 <link
   rel="stylesheet"
-  href="https://unpkg.com/@jsweb/font-awesome-base64/dist/fa-base.css"
+  href="https://unpkg.com/@jsweb/font-awesome-base64/fa-base.css"
 />
 ```
 

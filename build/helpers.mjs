@@ -49,7 +49,7 @@ export async function mapCssBuild(data) {
 }
 
 export function writeDist(name, data) {
-  const path = join(root, 'dist', `${name}.css`)
+  const path = join(root, `${name}.css`)
   const template = [
     '/*!',
     ` * ${pack.name}`,
