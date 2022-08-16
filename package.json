@@ -1,7 +1,7 @@
 {
   "name": "@jsweb/font-awesome-base64",
   "description": "Font Awesome Free icons compiled with WOFF2 base64 embedded font to CSS instead of link to font files",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "main": "fa-all.css",
   "repository": "git@github.com:jsweb/font-awesome-base64.git",
   "author": "Alex Bruno Cáceres <contato@alexbruno.dev>",
